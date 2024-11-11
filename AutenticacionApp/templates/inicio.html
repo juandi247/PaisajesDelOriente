@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Inicio</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            margin: 0;
+            padding: 0;
+        }
+
+        .container {
+            max-width: 600px;
+            margin: 0 auto;
+            padding: 20px;
+            background-color: white;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            border-radius: 8px;
+            margin-top: 100px;
+            text-align: center;
+        }
+
+        h1 {
+            color: #2d6a4f; /* Verde más oscuro */
+            font-size: 28px;
+        }
+
+        p {
+            font-size: 18px;
+            color: #333;
+        }
+
+        .button {
+            display: inline-block;
+            padding: 10px 20px;
+            margin-top: 20px;
+            background-color: #2d6a4f; /* Verde */
+            color: white;
+            border-radius: 4px;
+            text-decoration: none;
+            font-size: 16px;
+        }
+
+        .button:hover {
+            background-color: #1b4d32; /* Verde más oscuro en hover */
+        }
+
+        .footer {
+            margin-top: 30px;
+            font-size: 14px;
+            color: #555;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <h1>Bienvenido, {{ user.username }}!</h1>
+        <p>Tu correo electrónico es: <strong>{{ user.email }}</strong></p>
+
+        <!-- Enlace para cerrar sesión -->
+        <a href="{% url 'logout' %}" class="button">Cerrar sesión</a>
+    </div>
+
+    <div class="footer">
+        <p>¿Necesitas ayuda? <a href="#">Contáctanos</a></p>
+    </div>
+
+</body>
+</html>
