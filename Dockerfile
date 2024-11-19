@@ -17,7 +17,9 @@ COPY . .
 
 RUN python manage.py collectstatic
 
+RUN python manage.py makemigrations
 
+RUN python manage.py migrate
 
 # Expone el puerto que usará la aplicación
 EXPOSE 8000
