@@ -23,4 +23,4 @@ COPY . .
 EXPOSE 8000
 
 # Comando para ejecutar la aplicación
-CMD ["gunicorn", "--bind", "0.0.0.0:8000", "Project.wsgi:application"]
+CMD ["gunicorn", "--bind", "0.0.0.0:8000", "SoftwareViajes.wsgi:application"]
