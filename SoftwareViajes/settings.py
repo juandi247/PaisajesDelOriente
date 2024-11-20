@@ -25,7 +25,9 @@ SECRET_KEY = 'django-insecure-m$_3)!xy_y9j=#8ot&p5h752sk9$mbnl*_b$g_6n6!j&1mb!$8
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['paisajesdeloriente-production.up.railway.app','localhost','127.0.0.1:8000']
+ALLOWED_HOSTS = ['*']
+CORS_ALLOW_ALL_ORIGINS = True
+
 
 
 # Application definition
@@ -39,12 +41,14 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'AutenticacionApp',
      'rest_framework',
+      'corsheaders',
     'rest_framework.authtoken',
 ]
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
+    'corsheaders.middleware.CorsMiddleware',
     'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
     'django.contrib.auth.middleware.AuthenticationMiddleware',

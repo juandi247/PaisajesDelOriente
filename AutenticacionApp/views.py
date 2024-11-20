@@ -33,7 +33,7 @@ def validate_token(request):
     if user.is_authenticated:
         # Si el usuario está autenticado, devolvemos la información del usuario
         return Response({
-            "message": "Token válido.",
+            "isValid": True,
             "user": {
                 "username": user.username,
                 "email": user.email,
