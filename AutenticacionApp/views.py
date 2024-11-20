@@ -20,7 +20,28 @@ from rest_framework.authentication import TokenAuthentication
 
 # Create your views here.
 
+@api_view(['POST'])
+@authentication_classes([TokenAuthentication])
+@permission_classes([IsAuthenticated])
+def validate_token(request):
+    """
+    Endpoint para validar que el token es válido y pertenece a un usuario autenticado.
+    """
+    # Aquí simplemente validamos si el usuario está autenticado usando el token proporcionado
+    user = request.user  # Si el token es válido, request.user será el usuario autenticado
 
+    if user.is_authenticated:
+        # Si el usuario está autenticado, devolvemos la información del usuario
+        return Response({
+            "message": "Token válido.",
+            "user": {
+                "username": user.username,
+                "email": user.email,
+            }
+        }, status=status.HTTP_200_OK)
+    else:
+        # Si el token no es válido, retornamos un error de autenticación
+        return Response({"error": "Token no válido o expirado."}, status=status.HTTP_401_UNAUTHORIZED)
 
 
 @api_view(['POST'])
@@ -52,6 +73,9 @@ def rest_login(request):
 
 
 
+
+
+
 @api_view(['POST'])
 def rest_register(request):
     serializer = UserSerializer(data=request.data)
@@ -65,6 +89,7 @@ def rest_register(request):
         return Response({'token': token.key, "user": serializer.data}, status=status.HTTP_201_CREATED)
     
     return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
+
 
 
 
